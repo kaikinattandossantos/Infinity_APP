@@ -1,7 +1,7 @@
 # avaliacoes/models.py
 from django.db import models
 from django.contrib.auth.models import User
-from docentes.models import Professor # Importa nosso modelo de Professor
+from teachers.models import Professor 
 
 class Avaliacao(models.Model):
     # Quem foi avaliado:
