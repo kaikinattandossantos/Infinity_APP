@@ -9,12 +9,11 @@ class Professor(models.Model):
         verbose_name="Usuário"
     )
     
-    # NOVO CAMPO ADICIONADO AQUI
     telefone = models.CharField(
         max_length=20, 
         verbose_name="Telefone", 
-        blank=True,  # O campo é opcional no admin
-        null=True    # O campo pode ser nulo no banco
+        blank=True, 
+        null=True 
     )
     
     esta_ativo = models.BooleanField(
