@@ -1,9 +1,9 @@
 from django import forms
-from .models import Aluno
+from .models import Student
 
-class AlunoForm(forms.ModelForm):
+class StudentForm(forms.ModelForm):
     class Meta:
-        model = Aluno
+        model = Student
         
         fields = ['nome_aluno', 'turma', 'curso'] 
     

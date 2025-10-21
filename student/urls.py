@@ -1,25 +1,25 @@
 from django.urls import path
 from .views import (
-    AlunoListView,
-    AlunoDetailView,
-    AlunoCreateView,
-    AlunoUpdateView,
-    AlunoDeleteView
+    StudentListView,
+    StudentDetailView,
+    StudentCreateView,
+    StudentUpdateView,
+    StudentDeleteView
 )
 
 urlpatterns = [
     
-    path('', AlunoListView.as_view(), name='aluno_list'), 
+    path('', StudentListView.as_view(), name='aluno_list'), 
     
     
-    path('adicionar/', AlunoCreateView.as_view(), name='aluno_create'), 
+    path('adicionar/', StudentCreateView.as_view(), name='aluno_create'), 
     
     
-    path('<int:pk>/', AlunoDetailView.as_view(), name='aluno_detail'), 
+    path('<int:pk>/', StudentDetailView.as_view(), name='aluno_detail'), 
     
     
-    path('<int:pk>/editar/', AlunoUpdateView.as_view(), name='aluno_update'), 
+    path('<int:pk>/editar/', StudentUpdateView.as_view(), name='aluno_update'), 
     
     
-    path('<int:pk>/deletar/', AlunoDeleteView.as_view(), name='aluno_delete'),
+    path('<int:pk>/deletar/', StudentDeleteView.as_view(), name='aluno_delete'),
 ]

@@ -1,35 +1,35 @@
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Aluno
-from .forms import AlunoForm
+from .models import Student
+from .forms import StudentForm
 
-class AlunoCreateView(CreateView):
-    model = Aluno
-    form_class = AlunoForm 
-    template_name = 'escola/aluno_form.html'
+class StudentCreateView(CreateView):
+    model = Student
+    form_class = StudentForm 
+    template_name = 'student/student_form.html'
     
    
 
-class AlunoListView(ListView):
-    model = Aluno
-    template_name = 'escola/aluno_list.html' 
-    context_object_name = 'alunos' 
+class StudentListView(ListView):
+    model = Student
+    template_name = 'student/student_list.html' 
+    context_object_name = 'student' 
 
 
-class AlunoDetailView(DetailView):
-    model = Aluno
-    template_name = 'escola/aluno_detail.html'
-    context_object_name = 'aluno'
+class StudentDetailView(DetailView):
+    model = Student
+    template_name = 'student/student_detail.html'
+    context_object_name = 'student'
 
 
-class AlunoUpdateView(UpdateView):
-    model = Aluno
-    form_class = AlunoForm
-    template_name = 'escola/aluno_form.html' 
+class StudentUpdateView(UpdateView):
+    model = Student
+    form_class = StudentForm
+    template_name = 'student/student_form.html' 
 
 
-class AlunoDeleteView(DeleteView):
-    model = Aluno
-    template_name = 'escola/aluno_confirm_delete.html' 
-    success_url = reverse_lazy('aluno_list') 
+class StudentDeleteView(DeleteView):
+    model = Student
+    template_name = 'student/student_confirm_delete.html' 
+    success_url = reverse_lazy('student_list') 

@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse 
 
-class Aluno(models.Model):
+class Student(models.Model):
     
     nome_aluno = models.CharField(max_length=100) 
     
