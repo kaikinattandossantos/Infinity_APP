@@ -8,8 +8,15 @@ class Professor(models.Model):
         on_delete=models.CASCADE, 
         verbose_name="Usuário"
     )
+
+    name = models.CharField(    
+        max_length=20, 
+        verbose_name="Nome", 
+        blank=True, 
+        null=True 
+    )
     
-    telefone = models.CharField(
+    telefone = models.CharField(    
         max_length=20, 
         verbose_name="Telefone", 
         blank=True, 
