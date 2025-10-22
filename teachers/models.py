@@ -1,14 +1,7 @@
 # teachers/models.py
 from django.db import models
-from django.contrib.auth.models import User
 
 class Professor(models.Model):
-    user = models.OneToOneField(
-        User, 
-        on_delete=models.CASCADE, 
-        verbose_name="User"
-    )
-
     name = models.CharField( 
         max_length=100, 
         verbose_name="Name", 
@@ -23,7 +16,6 @@ class Professor(models.Model):
         null=True 
     )
     
-    # NOVO CAMPO ADICIONADO AQUI
     city = models.CharField( 
         max_length=100, 
         verbose_name="City", 
@@ -37,7 +29,7 @@ class Professor(models.Model):
     )
 
     def __str__(self):
-        return self.user.get_full_name() or self.user.username
+        return self.name
 
     class Meta:
         verbose_name = "Teacher"

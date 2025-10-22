@@ -19,7 +19,7 @@ class ReviewAdmin(admin.ModelAdmin):
         'comment'
     )
     
-    readonly_fields = ('teacher', 'student', 'creation_date')
+    readonly_fields = ('creation_date',)
     
     @admin.action(description='Student')
     def get_student_name(self, obj):
