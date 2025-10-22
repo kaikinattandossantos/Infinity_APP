@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'teachers',
-    'avaliacoes',
+    'reviews',
     'student',
 ]
 
@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # <-- MUDOU
-        'NAME': 'infinity_project',          # <-- O nome do DB que você criou no Passo 1
+        'NAME': 'infinity',          # <-- O nome do DB que você criou no Passo 1
         'USER': 'root',           # <-- Seu usuário do MySQL (ex: 'root')
         'PASSWORD': '',         # <-- Sua senha do MySQL
         'HOST': 'localhost',                   # <-- 'localhost' se o DB estiver na sua máquina

@@ -1,4 +1,3 @@
-# docentes/views.py
 from django.urls import reverse_lazy
 from django.views.generic import (
     ListView, 
@@ -8,48 +7,36 @@ from django.views.generic import (
     DeleteView
 )
 from .models import Professor
-from .forms import ProfessorForm 
+from .forms import TeacherForm 
 
-
-
-class ProfessorListView(ListView):
-    """Lista todos os professores ativos."""
+class TeacherListView(ListView):
     model = Professor
-    template_name = 'docentes/professor_list.html'
-    context_object_name = 'professores'
-   
+    template_name = 'teachers/teacher_list.html'
+    context_object_name = 'teachers'
+    
     def get_queryset(self):
-        return Professor.objects.filter(esta_ativo=True).select_related('user')
-       
-
-class ProfessorDetailView(DetailView):
-    """Exibe os detalhes de um professor específico."""
+        return Professor.objects.filter(is_active=True).select_related('user')
+        
+class TeacherDetailView(DetailView):
     model = Professor
-    template_name = 'docentes/professor_detail.html'
-    context_object_name = 'professor'
+    template_name = 'teachers/teacher_detail.html'
+    context_object_name = 'teacher'
 
-
-
-class ProfessorCreateView(CreateView):
-   
+class TeacherCreateView(CreateView):
     model = Professor
-    form_class = ProfessorForm
-    template_name = 'docentes/professor_form.html'
-    
-    success_url = reverse_lazy('professor_list') 
+    form_class = TeacherForm
+    template_name = 'teachers/teacher_form.html'
+    success_url = reverse_lazy('teacher_list') 
 
-class ProfessorUpdateView(UpdateView):
-    
+class TeacherUpdateView(UpdateView):
     model = Professor
-    form_class = ProfessorForm
-    template_name = 'docentes/professor_form.html'
-    context_object_name = 'professor'
-    success_url = reverse_lazy('professor_list')
+    form_class = TeacherForm
+    template_name = 'teachers/teacher_form.html'
+    context_object_name = 'teacher'
+    success_url = reverse_lazy('teacher_list')
 
-class ProfessorDeleteView(DeleteView):
-   
+class TeacherDeleteView(DeleteView):
     model = Professor
-    template_name = 'docentes/professor_confirm_delete.html'
-    context_object_name = 'professor'
-    
-    success_url = reverse_lazy('professor_list')
+    template_name = 'teachers/teacher_confirm_delete.html'
+    context_object_name = 'teacher'
+    success_url = reverse_lazy('teacher_list')
