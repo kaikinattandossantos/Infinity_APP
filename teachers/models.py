@@ -1,3 +1,4 @@
+# teachers/models.py
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -18,6 +19,14 @@ class Professor(models.Model):
     phone = models.CharField( 
         max_length=20, 
         verbose_name="Phone", 
+        blank=True, 
+        null=True 
+    )
+    
+    # NOVO CAMPO ADICIONADO AQUI
+    city = models.CharField( 
+        max_length=100, 
+        verbose_name="City", 
         blank=True, 
         null=True 
     )
