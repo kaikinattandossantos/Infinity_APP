@@ -1,3 +1,4 @@
+# reviews/models.py
 from django.db import models
 from django.contrib.auth.models import User
 from teachers.models import Professor 
@@ -17,6 +18,11 @@ class Review(models.Model):
         blank=True,
         verbose_name="Student"
     )
+
+    class_name = models.CharField(  # <-- NOVO CAMPO
+        max_length=100,
+        verbose_name="Class (Aula)"
+    )
     
     teaching_score = models.PositiveSmallIntegerField(verbose_name="Teaching Score (1-5)", default=0)
     punctuality_score = models.PositiveSmallIntegerField(verbose_name="Punctuality Score (1-5)", default=0)
@@ -35,7 +41,7 @@ class Review(models.Model):
     def __str__(self):
         student_name = self.student.username if self.student else "Anonymous"
         return f"Review from {student_name} for {self.teacher}"
-        
+
     class Meta:
         verbose_name = "Review"
         verbose_name_plural = "Reviews"

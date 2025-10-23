@@ -2,21 +2,37 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Review
+from .forms import ReviewForm # Importa o novo formulário
 from teachers.models import Professor 
 
 class ReviewPostCreateView(LoginRequiredMixin, CreateView):
     model = Review
-    fields = ['teacher', 'teaching_score', 'punctuality_score', 'comment']
+    form_class = ReviewForm # Usa o novo formulário
     template_name = 'reviews/review_form.html'
-    success_url = reverse_lazy('teacher_list')
+    success_url = reverse_lazy('review_success') # Cria uma URL de sucesso
 
-    def get_form(self, form_class=None):
-        form = super().get_form(form_class)
-        form.fields['teacher'].queryset = Professor.objects.all()
-        print("🔍 Professores carregados:", list(form.fields['teacher'].queryset))
-        return form
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        # Passa o usuário logado para o formulário, se necessário
+        kwargs['user'] = self.request.user
+        return kwargs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = 'Avaliar Monitor'
+        return context
 
     def form_valid(self, form):
+        # O campo 'student' no Review model é um ForeignKey para User
+        # O aluno logado (User) é automaticamente definido como o autor da avaliação
         form.instance.student = self.request.user
         return super().form_valid(form)
+    
+# View simples para sucesso
+def review_success(request):
+    return render(request, 'reviews/review_success.html', {'message': 'Sua avaliação foi enviada com sucesso!'})

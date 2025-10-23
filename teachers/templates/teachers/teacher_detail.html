@@ -1,0 +1,18 @@
+<!-- teachers/templates/teachers/teacher_detail.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Monitor</title>
+</head>
+<body>
+    <h1>Detalhes do Monitor</h1>
+
+    <p><strong>Nome:</strong> {{ teacher.name }}</p>
+    <p><strong>Cidade:</strong> {{ teacher.city }}</p>
+
+    <a href="{% url 'teacher_update' teacher.pk %}">Editar</a> |
+    <a href="{% url 'teacher_delete' teacher.pk %}">Excluir</a> |
+    <a href="{% url 'teacher_list' %}">Voltar à lista</a>
+</body>
+</html>

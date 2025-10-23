@@ -1,0 +1,20 @@
+<!-- teachers/templates/teachers/teacher_form.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if teacher %}Editar{% else %}Cadastrar{% endif %} Monitor</title>
+</head>
+<body>
+    <h1>{% if teacher %}Editar{% else %}Cadastrar{% endif %} Monitor</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">{% if teacher %}Atualizar{% else %}Cadastrar{% endif %}</button>
+    </form>
+
+    <a href="{% url 'teacher_list' %}">Voltar à lista</a>
+</body>
+</html>

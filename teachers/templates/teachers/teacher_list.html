@@ -1,0 +1,25 @@
+<!-- teachers/templates/teachers/teacher_list.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Monitores</title>
+</head>
+<body>
+    <h1>Lista de Monitores</h1>
+
+    <ul>
+        {% for teacher in teachers %}
+            <li>
+                <a href="{% url 'teacher_detail' teacher.pk %}">
+                    {{ teacher.name }} — {{ teacher.city }}
+                </a>
+            </li>
+        {% empty %}
+            <li>Nenhum monitor cadastrado ainda.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'teacher_create' %}">Cadastrar novo monitor</a>
+</body>
+</html>
