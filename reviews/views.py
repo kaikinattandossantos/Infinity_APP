@@ -12,9 +12,9 @@ from teachers.models import Professor
 
 class ReviewPostCreateView(LoginRequiredMixin, CreateView):
     model = Review
-    form_class = ReviewForm # Usa o novo formulário
+    form_class = ReviewForm 
     template_name = 'reviews/review_form.html'
-    success_url = reverse_lazy('review_success') # Cria uma URL de sucesso
+    success_url = reverse_lazy('review_success') 
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()

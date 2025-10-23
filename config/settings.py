@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'teachers',
     'reviews',
     'student',
+    'core',
+
 ]
 
 MIDDLEWARE = [
@@ -130,3 +132,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = '/accounts/login/'         # redireciona usuários não logados
+LOGIN_REDIRECT_URL = '/reviews/add/'   # depois do login, envia para avaliação
+LOGOUT_REDIRECT_URL = '/'              # depois do logout, envia para home

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Avaliar Monitor</title>
+</head>
+<body>
+    <h1>Avaliar Monitor</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enviar Avaliação</button>
+    </form>
+
+    <a href="/">Voltar</a>
+</body>
+</html>
