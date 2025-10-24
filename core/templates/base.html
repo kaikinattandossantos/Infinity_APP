@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Infinity APP{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+</head>
+<body>
+    <header>
+        <h1>Infinity APP</h1>
+        <nav>
+            <a href="/">Início</a> |
+            <a href="/reviews/add/">Nova Avaliação</a> |
+            
+            <a href="{% url 'admin:index' %}">Login Admin</a>
+
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Infinity</p>
+    </footer>
+</body>
+</html>

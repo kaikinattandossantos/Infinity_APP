@@ -18,7 +18,6 @@ class ReviewPostCreateView(LoginRequiredMixin, CreateView):
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
-        # Passa o usuário logado para o formulário, se necessário
         kwargs['user'] = self.request.user
         return kwargs
 
@@ -28,11 +27,9 @@ class ReviewPostCreateView(LoginRequiredMixin, CreateView):
         return context
 
     def form_valid(self, form):
-        # O campo 'student' no Review model é um ForeignKey para User
-        # O aluno logado (User) é automaticamente definido como o autor da avaliação
+
         form.instance.student = self.request.user
         return super().form_valid(form)
     
-# View simples para sucesso
 def review_success(request):
     return render(request, 'reviews/review_success.html', {'message': 'Sua avaliação foi enviada com sucesso!'})
